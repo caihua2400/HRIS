@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="HRIS.Source.View.StaffListUserControl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HRIS.Source.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="300">
+
+    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="Auto" Background="#f4f4f4">
+        <GroupBox DockPanel.Dock="Top" BorderThickness="0" Foreground="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Content="Staff Search and Filter" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2"/>
+
+                <Label Content="Name" Width="60" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="TBSearchName" Grid.Row="1" Grid.Column="1" Margin="0,3" TextChanged="TBSearchName_Changed"/>
+
+                <Label Content="Category" Width="60" Grid.Row="2" Grid.Column="0"/>
+                <ComboBox x:Name="CBCategory" SelectedIndex="0" Margin="0,3" Grid.Row="2" Grid.Column="1" SelectionChanged="CBCategory_SelectionChanged"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="Staff List" FontWeight="Bold" DockPanel.Dock="Top" Margin="6,0,6,0" FontSize="14" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+        <ListBox x:Name="LBStaff" Background="Transparent" Margin="6,0,6,6" ItemsSource="{Binding Source={StaticResource StaffList}}" BorderThickness="0" Height="Auto" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedIndex="0" ItemContainerStyle="{StaticResource HRISListBoxStyle}" SelectionChanged="LBStaff_SelectionChanged">
+        </ListBox>
+    </DockPanel>
+</UserControl>

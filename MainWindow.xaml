@@ -1,0 +1,47 @@
+﻿<Window x:Class="HRIS.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HRIS"
+        xmlns:v="clr-namespace:HRIS.Source.View"
+        mc:Ignorable="d"
+        Title="Human Resource Information System" Height="650" Width="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderBrush="#e32213" BorderThickness="0 0 0 0" VerticalAlignment="Top" Grid.ColumnSpan="3">
+            <StackPanel Orientation="Horizontal" Grid.ColumnSpan="3">
+                <Image Source="Asset/utas-logo.png" Stretch="UniformToFill" Margin="14"/>
+                <!--<Label Content="Human Resource Information System" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>-->
+            </StackPanel>
+        </Border>
+        <TabControl Grid.Row="1" Style="{StaticResource TabControlStyle}">
+            <TabItem Name="Staffs" Header="Staff List" Style="{StaticResource TabItemStyle}">
+                <TabItem.Content>
+                    <Grid Background="#f4f4f4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <v:StaffListUserControl Grid.Column="0" x:Name="StaffList"/>
+                        <v:StaffDetailUserControl Grid.Column="1" x:Name="StaffDetail" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Name="Units" Header="Unit List" Style="{StaticResource TabItemStyle}">
+                <Grid Background="#f4f4f4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="340" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <v:UnitListUserControl Grid.Column="0" x:Name="UnitList"/>
+                    <v:UnitDetailUserControl Grid.Column="1" x:Name="UnitDetail"/>
+                </Grid>
+            </TabItem>
+            
+        </TabControl>
+    </Grid>
+</Window>
